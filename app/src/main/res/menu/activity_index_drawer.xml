@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/grp1" android:checkableBehavior="single">
+        <item
+            android:id="@+id/message"
+            android:icon="@mipmap/bubbles_g"
+            android:title="我的消息"/>
+        <item
+            android:id="@+id/store"
+            android:icon="@mipmap/steam2_g"
+            android:title="积分商城"/>
+        <item
+            android:id="@+id/music"
+            android:icon="@mipmap/play2_g"
+            android:title="付费音乐包"/>
+        <item
+            android:id="@+id/twitter"
+            android:icon="@mipmap/twitter_g"
+            android:title="听歌识曲"/>
+        <item
+            android:id="@+id/window"
+            android:icon="@mipmap/windows8_g"
+            android:title="主题换肤"/>
+    </group>
+</menu>

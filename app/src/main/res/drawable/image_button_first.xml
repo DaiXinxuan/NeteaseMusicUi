@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dxx="http://schemas.android.com/apk/res/philips.com.myapplication">
+    <item dxx:isChecked="true" android:drawable="@mipmap/users"></item>
+    <item dxx:isChecked="false" android:drawable="@mipmap/users_gray"></item>
+</selector>
