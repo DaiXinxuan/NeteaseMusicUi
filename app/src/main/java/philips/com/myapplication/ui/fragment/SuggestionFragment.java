@@ -1,5 +1,6 @@
 package philips.com.myapplication.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,13 +12,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
+import android.widget.Scroller;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import philips.com.myapplication.R;
 import philips.com.myapplication.adapter.ViewPagerPictureAdapter;
@@ -29,24 +29,56 @@ public class SuggestionFragment extends Fragment {
     private ImageView[] imageViews;
     private ViewPager viewPager;
     private ArrayList<View> viewArrayList;
-    private boolean isContinue = true;
-    private int currentPage = 0;
-    private AtomicInteger what = new AtomicInteger(0);
 
-    private Handler viewPagerHandler = new Handler() {
+    private boolean isContinue = true;
+    private int WHAT_AUTO_PLAY = 1000;
+    private int autoPlayDuration = 5000;
+    private int scrollDuration = 900;
+
+    private Handler viewPagerHandler = new Handler(new Handler.Callback() {
         @Override
-        public void handleMessage(Message msg) {
-            viewPager.setCurrentItem(msg.what);
+        public boolean handleMessage(Message msg) {
+            if (msg.what == WHAT_AUTO_PLAY) {
+                if (viewPager != null) {
+                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
+                    viewPagerHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
+                }
+            }
+            return false;
         }
-    };
-    private Runnable runnable;
+    });
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_suggestion, container, false);
         initView(view);
+        startAutoPlay();
         return view;
+    }
+
+    public void setSliderTransformDuration(int duration) {
+        try {
+            Field mScroller = ViewPager.class.getDeclaredField("mScroller");
+            mScroller.setAccessible(true);
+            FixedSpeedScroller scroller = new FixedSpeedScroller(viewPager.getContext(), null, duration);
+            mScroller.set(viewPager, scroller);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void startAutoPlay() {
+        stopAutoPlay();
+        if (isContinue) {
+            viewPagerHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
+        }
+    }
+
+    private void stopAutoPlay() {
+        if (isContinue) {
+            viewPagerHandler.removeMessages(WHAT_AUTO_PLAY);
+        }
     }
 
     private void initView(View view) {
@@ -92,36 +124,17 @@ public class SuggestionFragment extends Fragment {
         }
 
         viewPager.setAdapter(new ViewPagerPictureAdapter(viewArrayList));
-        viewPager.setCurrentItem(1);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+        //设置当前item到Integer.MAX_VALUE中间的一个值，看起来像无论是往前滑还是往后滑都是ok的
+        //如果不设置，用户往左边滑动的时候已经划不动了
+        int targetItemPosition = Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % viewArrayList.size();
+        viewPager.setCurrentItem(targetItemPosition);
+        switchIndicator(targetItemPosition % viewArrayList.size());
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
 
             @Override
             public void onPageSelected(int position) {
-                currentPage = position - 1;
-                if (position == 0) {
-                    currentPage = viewArrayList.size() - 1;
-                } else if (position > viewArrayList.size()) {
-                    currentPage = 0;
-                }
-                if (currentPage != position - 1){
-                    viewPager.setCurrentItem(currentPage+1, false);
-                }
-                for (int i = 0; i < viewArrayList.size(); i++) {
-                    Log.e("Position"," "+position);
-                    Log.e("CurrentPage", " "+ currentPage);
-                    imageViews[currentPage].setImageResource(R.mipmap.banner_dian_focus);
-                    if (i != currentPage) {
-                        imageViews[i%viewArrayList.size()].setImageResource(R.mipmap.banner_dian_blur);
-                    }
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
+                switchIndicator(position % viewArrayList.size());
+                super.onPageSelected(position);
             }
         });
         viewPager.setOnTouchListener(new View.OnTouchListener() {
@@ -129,38 +142,52 @@ public class SuggestionFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                    case MotionEvent.ACTION_MOVE:
-                        isContinue = false;
+                        stopAutoPlay();
                         break;
+                    case MotionEvent.ACTION_CANCEL:
                     case MotionEvent.ACTION_UP:
-                        isContinue = true;
-                        break;
-                    default:
-                        isContinue = true;
+                        startAutoPlay();
                         break;
                 }
                 return false;
             }
         });
-
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                if (isContinue) {
-                    viewPagerHandler.sendEmptyMessage(currentPage);
-                    currentPage ++;
-                    currentPage = currentPage % viewArrayList.size();
-                }
-                viewPagerHandler.postDelayed(this,3500);
-            }
-        };
-        viewPagerHandler.postDelayed(runnable, 3500);
+        setSliderTransformDuration(scrollDuration);
     }
 
-    private void whatOption() {
-        what.incrementAndGet();
-//        if (what.get() > imageViews.length - 1) {
-//            what = new AtomicInteger(0);
-//        }
+    private void switchIndicator(int position) {
+        for (int i=0; i < viewArrayList.size(); i++) {
+            if (position == i) {
+                imageViews[i].setImageResource(R.mipmap.banner_dian_focus);
+            } else imageViews[i].setImageResource(R.mipmap.banner_dian_blur);
+        }
+    }
+
+
+    private class FixedSpeedScroller extends Scroller{
+        private int mDuration = 1000;
+
+        public FixedSpeedScroller(Context context) {
+            super(context);
+        }
+
+        public FixedSpeedScroller(Context context, Interpolator interpolator) {
+            super(context, interpolator);
+        }
+
+        @Override
+        public void startScroll(int startX, int startY, int dx, int dy) {
+            super.startScroll(startX, startY, dx, dy, mDuration);
+        }
+
+        @Override
+        public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+            super.startScroll(startX, startY, dx, dy, mDuration);
+        }
+
+        public FixedSpeedScroller(Context context, Interpolator interpolator, int mDuration) {
+            this(context, interpolator);
+            this.mDuration = mDuration;
+        }
     }
 }

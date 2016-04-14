@@ -1,10 +1,9 @@
 package philips.com.myapplication.adapter;
 
-import android.os.Parcelable;
+
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import java.util.ArrayList;
 
@@ -14,44 +13,25 @@ import java.util.ArrayList;
 public class ViewPagerPictureAdapter extends PagerAdapter {
     private ArrayList<View> views;
 
-    //n,0,1,2,....,n-1,n,0
-    private ArrayList<View> initViews(ArrayList<View> views) {
-        ArrayList<View> views1 = new ArrayList<>();
-        views1.addAll(views);
-        views1.add(0, views.get(views.size() - 1));
-        views1.add(views.get(0));
-        return views1;
-    }
-
     public ViewPagerPictureAdapter(ArrayList<View> views){
-        this.views = initViews(views);
+        this.views = views;
     }
 
     @Override
     public int getCount() {
-        return views.size();
+        return Integer.MAX_VALUE;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         //对ViewPager页号求模取出View列表中要显示的项
-//        position = position % views.size();
-//        if (position < 0){
-//            position = views.size() + position;
-//        }
-        View view = views.get(position);
-        if (position == 0){
-            view = views.get(5);
-        } else if (position == views.size() - 1) {
-            view = views.get(1);
-        } else view = views.get(position);
-        //如果View已经在之前添加到了一个父组件，则必须先remove，否则会抛出IllegalStateException。
-        ViewParent vp = view.getParent();
-        if (vp!=null){
-            ViewGroup parent = (ViewGroup)vp;
-            parent.removeView(view);
+        View view = views.get(position % views.size());
+        if (container.equals(view.getParent())) {
+            container.removeView(view);
         }
-        container.addView(view, 0);
+        //上面这些语句必须加上，如果不加的话，就会产生则当用户滑到第四个的时候就会触发这个异常
+        //原因是我们试图把一个有父组件的View添加到另一个组件。
+        container.addView(view);
         return view;
     }
 
@@ -60,40 +40,8 @@ public class ViewPagerPictureAdapter extends PagerAdapter {
     }
 
     @Override
-    public void startUpdate(View container) {
-        super.startUpdate(container);
-    }
-
-
-//    @Override
-//    public Object instantiateItem(View container, int position) {
-//        ((ViewPager)container).addView(views.get(position), 0);
-//        return views.get(position);
-//    }
-//
-//    @Override
-//    public void destroyItem(View container, int position, Object object) {
-//        View view = views.get(position % views.size());
-//        ((ViewPager) container).removeView(view);
-//    }
-
-    @Override
-    public void finishUpdate(View container) {
-        super.finishUpdate(container);
-    }
-
-    @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
     }
 
-    @Override
-    public Parcelable saveState() {
-        return null;
-    }
-
-    @Override
-    public void restoreState(Parcelable state, ClassLoader loader) {
-        super.restoreState(state, loader);
-    }
 }
