@@ -69,6 +69,7 @@ public class SuggestionFragment extends Fragment {
     }
 
     private void startAutoPlay() {
+        //避免出现重复消息传递
         stopAutoPlay();
         if (isContinue) {
             viewPagerHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
@@ -163,7 +164,7 @@ public class SuggestionFragment extends Fragment {
         }
     }
 
-
+    //调整viewpager中的滑动速率(默认为250毫秒，速度太快)，增加美感
     private class FixedSpeedScroller extends Scroller{
         private int mDuration = 1000;
 
