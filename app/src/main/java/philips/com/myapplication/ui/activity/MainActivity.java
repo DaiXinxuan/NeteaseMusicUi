@@ -1,4 +1,4 @@
-package philips.com.myapplication.ui;
+package philips.com.myapplication.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
