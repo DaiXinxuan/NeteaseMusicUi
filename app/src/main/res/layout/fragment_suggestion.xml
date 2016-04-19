@@ -35,7 +35,8 @@
                 android:layout_marginLeft="@dimen/padding_large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:resource="@mipmap/steam2_g"
+                app:resource="@mipmap/bubble2"
+                app:resourcePressed="@mipmap/bubble"
                 app:text="@string/personal"
                 app:strokeColor="@color/actionBarColor">
             </philips.com.myapplication.customview.CircleIndicator>
@@ -45,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                app:resource="@mipmap/windows8_g"
+                app:resource="@mipmap/html_five2"
+                app:resourcePressed="@mipmap/html_five"
                 app:text="@string/everday_suggest"
                 app:strokeColor="@color/actionBarColor">
             </philips.com.myapplication.customview.CircleIndicator>
@@ -55,7 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                app:resource="@mipmap/stackoverflow_g"
+                app:resource="@mipmap/star_empty"
+                app:resourcePressed="@mipmap/star_full"
                 app:text="@string/cloud_music"
                 app:strokeColor="@color/actionBarColor">
             </philips.com.myapplication.customview.CircleIndicator>
