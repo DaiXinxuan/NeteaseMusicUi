@@ -26,4 +26,11 @@
         <attr name="collapsedHeight" format="dimension" />
         <attr name="animationDuration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="CircleIndicator">
+        <attr name="resource" format="reference"/>
+        <attr name="text" format="string"/>
+        <attr name="strokeColor" format="color"/>
+        <attr name="strokeWidth" format="dimension"/>
+    </declare-styleable>
 </resources>

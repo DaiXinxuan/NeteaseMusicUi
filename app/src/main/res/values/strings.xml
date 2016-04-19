@@ -14,4 +14,7 @@
     <string name="dynamic">动态</string>
     <string name="around">附近</string>
     <string name="friends">好友</string>
+    <string name="personal">私人FM</string>
+    <string name="everday_suggest">每日歌曲推荐</string>
+    <string name="cloud_music">云音乐新歌榜</string>
 </resources>

@@ -112,7 +112,7 @@ public class SuggestionFragment extends Fragment {
 
         for (int i = 0; i < viewArrayList.size(); i++) {
             ImageView imageView = new ImageView(getContext());
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(60, 60));
+            imageView.setLayoutParams(new ViewGroup.LayoutParams(50, 50));
             imageView.setPadding(15, 0, 15, 0);
             imageViews[i] = imageView;
             if (i == 0) {
