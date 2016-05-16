@@ -45,7 +45,7 @@ public class LocalBitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
     }
 
     public Bitmap loadImage(int resId){
-        Bitmap bitmap = ImageLoader.decodeSampledBitmapFromResource(context, resId, 100, 100);
+        Bitmap bitmap = ImageLoader.decodeSampledBitmapFromResource(context, resId, 300, 300);
         imageLoader.addBitmapToMemoryCache(resId+"", bitmap);
         return bitmap;
     }

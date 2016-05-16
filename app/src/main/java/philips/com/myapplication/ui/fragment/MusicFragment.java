@@ -50,6 +50,7 @@ public class MusicFragment extends Fragment {
                 Toast.makeText(getContext(), position + "", Toast.LENGTH_SHORT).show();
             }
         }));
+        mainList.setNestedScrollingEnabled(false);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
         linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
@@ -61,6 +62,7 @@ public class MusicFragment extends Fragment {
 
             }
         }));
+        createSongList.setNestedScrollingEnabled(false);
 
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
         linearLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL);
@@ -72,6 +74,7 @@ public class MusicFragment extends Fragment {
 
             }
         }));
+        collectSongList.setNestedScrollingEnabled(false);
 
         expandedPanel1 = (ExpandedPanel) view.findViewById(R.id.expandedpanel1);
         expandedPanel2 = (ExpandedPanel) view.findViewById(R.id.expandedpanel2);

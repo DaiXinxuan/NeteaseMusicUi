@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
     private FriendFragment friendFragment;
     private RecyclerView listView;
 
-
     @Override
     public void onBackPressed() {
         if (navigationView.isShown())

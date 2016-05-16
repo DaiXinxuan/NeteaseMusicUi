@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/suggestion_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+    </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:id="@+id/viewGroup"
+        android:layout_below="@id/suggestion_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-60px"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/circle_indicators"
+        android:layout_below="@+id/suggestion_viewpager"
+        android:padding="@dimen/padding_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <philips.com.myapplication.customview.CircleIndicator
+            android:id="@+id/personal_circle"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:resource="@mipmap/bubble2"
+            app:resourcePressed="@mipmap/bubble"
+            app:text="@string/personal"
+            app:strokeColor="@color/actionBarColor">
+        </philips.com.myapplication.customview.CircleIndicator>
+
+        <philips.com.myapplication.customview.CircleIndicator
+            android:id="@+id/everday_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:resource="@mipmap/html_five2"
+            app:resourcePressed="@mipmap/html_five"
+            app:text="@string/everday_suggest"
+            app:strokeColor="@color/actionBarColor">
+        </philips.com.myapplication.customview.CircleIndicator>
+
+        <philips.com.myapplication.customview.CircleIndicator
+            android:id="@+id/cloud_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            app:resource="@mipmap/star_empty"
+            app:resourcePressed="@mipmap/star_full"
+            app:text="@string/cloud_music"
+            app:strokeColor="@color/actionBarColor">
+        </philips.com.myapplication.customview.CircleIndicator>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/cut_rule"
+        android:layout_below="@+id/circle_indicators"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_background"
+        />
+</RelativeLayout>

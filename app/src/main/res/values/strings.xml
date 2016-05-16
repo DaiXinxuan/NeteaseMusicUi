@@ -17,4 +17,10 @@
     <string name="personal">私人FM</string>
     <string name="everday_suggest">每日歌曲推荐</string>
     <string name="cloud_music">云音乐新歌榜</string>
+    <string name="more">更多</string>
+    <string name="onlyone">独家放送</string>
+    <string name="suggestion_music">推荐歌单</string>
+    <string name="latestmusic">最新音乐</string>
+    <string name="suggestion_mv">推荐MV</string>
+    <string name="player_radio">主播电台</string>
 </resources>

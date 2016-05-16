@@ -7,7 +7,8 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,21 +17,28 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.Scroller;
 
+
+import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import philips.com.myapplication.R;
+import philips.com.myapplication.adapter.RecyclerListAdapter;
 import philips.com.myapplication.adapter.ViewPagerPictureAdapter;
+import philips.com.myapplication.bean.SuggestMusicBean;
+import philips.com.myapplication.imageloader.ImageLoader;
 
 /**
  * Created by 310231492 on 2016/3/21.
  */
 public class SuggestionFragment extends Fragment {
+    private RecyclerView recyclerView;
     private ImageView[] imageViews;
     private ViewPager viewPager;
     private ArrayList<View> viewArrayList;
+    private ArrayList<SuggestMusicBean> arrayList;
 
-    private boolean isContinue = true;
     private int WHAT_AUTO_PLAY = 1000;
     private int autoPlayDuration = 5000;
     private int scrollDuration = 900;
@@ -52,6 +60,7 @@ public class SuggestionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_suggestion, container, false);
+        arrayList = initMusicData();
         initView(view);
         startAutoPlay();
         return view;
@@ -71,19 +80,24 @@ public class SuggestionFragment extends Fragment {
     private void startAutoPlay() {
         //避免出现重复消息传递
         stopAutoPlay();
-        if (isContinue) {
-            viewPagerHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
-        }
+        viewPagerHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
     }
 
     private void stopAutoPlay() {
-        if (isContinue) {
-            viewPagerHandler.removeMessages(WHAT_AUTO_PLAY);
-        }
+        viewPagerHandler.removeMessages(WHAT_AUTO_PLAY);
     }
 
     private void initView(View view) {
-        viewPager = (ViewPager) view.findViewById(R.id.suggestion_viewpager);
+        recyclerView = (RecyclerView) view.findViewById(R.id.music_home_list);
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        RecyclerListAdapter recyclerListAdapter = new RecyclerListAdapter(getContext(), arrayList);
+        recyclerView.setAdapter(recyclerListAdapter);
+        recyclerView.setNestedScrollingEnabled(false);
+
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.recyclerheader, recyclerView, false);
+        recyclerListAdapter.setHeaderView(header);
+//        RecyclerViewHeader header = (RecyclerViewHeader) view.findViewById(R.id.header);
+        viewPager = (ViewPager) header.findViewById(R.id.suggestion_viewpager);
         viewArrayList = new ArrayList<>();
         ImageView imageView1 = new ImageView(getContext());
         imageView1.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -107,7 +121,7 @@ public class SuggestionFragment extends Fragment {
         viewArrayList.add(imageView5);
 
         // group是R.layou.mainview中的负责包裹小圆点的LinearLayout.
-        ViewGroup group = (ViewGroup) view.findViewById(R.id.viewGroup);
+        ViewGroup group = (ViewGroup) header.findViewById(R.id.viewGroup);
         imageViews = new ImageView[viewArrayList.size()];
 
         for (int i = 0; i < viewArrayList.size(); i++) {
@@ -130,7 +144,7 @@ public class SuggestionFragment extends Fragment {
         int targetItemPosition = Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % viewArrayList.size();
         viewPager.setCurrentItem(targetItemPosition);
         switchIndicator(targetItemPosition % viewArrayList.size());
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
@@ -154,6 +168,43 @@ public class SuggestionFragment extends Fragment {
             }
         });
         setSliderTransformDuration(scrollDuration);
+//        header.attachTo(recyclerView);
+    }
+
+
+    public ArrayList<SuggestMusicBean> initMusicData() {
+        ArrayList<SuggestMusicBean> arrayList = new ArrayList<>();
+        arrayList.add(new SuggestMusicBean(R.mipmap.daze, "在黑夜里，寻求心灵的慰藉"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample2, "史诗配乐，可以让你沸腾的音乐"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample1, "现实永远装不满梦想的田字格"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample3, "日系女音中细腻的爱情"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample4, "黑白键上破茧绽放的羽翼"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.kano, "在黑夜里，寻求心灵的慰藉"));
+
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor1, "网易音乐人 第39期"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor2, "探索频道 第116期"));
+
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample5, "一周热评 第86期 你有什么资格不努力"));
+
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample6, "Losing For You"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample7, "Losing you"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample8, "恋愛"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample9, "东方入眠抄"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample10, "花束お君に"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample11, "恋に咲け"));
+
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor3, "在，也不见"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor4, "Needed Me"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor5, "One More Time, One more Chance"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample5, "See you again"));
+
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample12, "Losing For You"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.sample13, "Losing you"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.kano, "恋愛"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor3, "东方入眠抄"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor4, "花束お君に"));
+        arrayList.add(new SuggestMusicBean(R.mipmap.hor2, "恋に咲け"));
+        return arrayList;
     }
 
     private void switchIndicator(int position) {
