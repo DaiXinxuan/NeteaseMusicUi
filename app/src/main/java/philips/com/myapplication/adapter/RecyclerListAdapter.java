@@ -226,9 +226,6 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return list.size() + 3;
     }
 
-    public View getHeaderView() {
-        return headerView;
-    }
 
     public void setHeaderView(View headerView) {
         this.headerView = headerView;

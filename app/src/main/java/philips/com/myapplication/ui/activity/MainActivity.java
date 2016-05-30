@@ -3,27 +3,19 @@ package philips.com.myapplication.ui.activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.SpinnerAdapter;
 
 import java.util.ArrayList;
 
 import philips.com.myapplication.R;
-import philips.com.myapplication.adapter.RecyclerAdapter;
+import philips.com.myapplication.adapter.ViewPagerFragmentAdapter;
 import philips.com.myapplication.customview.CheckableImageButton;
 import philips.com.myapplication.ui.fragment.FriendFragment;
 import philips.com.myapplication.ui.fragment.HomeFragment;
@@ -39,7 +31,8 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
     private HomeFragment homeFragment;
     private MusicFragment musicFragment;
     private FriendFragment friendFragment;
-    private RecyclerView listView;
+    private ArrayList<Fragment> fragments;
+    private ViewPager viewPager;
 
     @Override
     public void onBackPressed() {
@@ -54,9 +47,15 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fragments = new ArrayList<>();
+        homeFragment = new HomeFragment();
+        musicFragment = new MusicFragment();
+        friendFragment = new FriendFragment();
+        fragments.add(homeFragment);
+        fragments.add(musicFragment);
+        fragments.add(friendFragment);
         initView();
         setSupportActionBar(toolbar);
-        homeFragment = new HomeFragment();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -77,17 +76,17 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
                 return true;
             }
         });
+        navigationView.setItemIconTintList(null);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
-
-        goHomeFragment();
     }
 
     public void initView() {
+        viewPager = (ViewPager) findViewById(R.id.main_viewpager);
         menu = (ImageView) findViewById(R.id.menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -98,11 +97,24 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
         checkableImageButton1.setmOnCheckedChangeListener(this);
         checkableImageButton2.setmOnCheckedChangeListener(this);
         checkableImageButton3.setmOnCheckedChangeListener(this);
-    }
 
-    public void goHomeFragment() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment)
-                .addToBackStack(null).commit();
+        viewPager.setAdapter(new ViewPagerFragmentAdapter(getSupportFragmentManager(), fragments));
+        viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0: checkableImageButton1.performClick();
+                        break;
+                    case 1: checkableImageButton2.performClick();
+                        break;
+                    case 2: checkableImageButton3.performClick();
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -112,24 +124,17 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
                 case R.id.firstIb:
                     checkableImageButton2.setChecked(false);
                     checkableImageButton3.setChecked(false);
-                    goHomeFragment();
+                    viewPager.setCurrentItem(0);
                     break;
                 case R.id.secondIb:
                     checkableImageButton1.setChecked(false);
                     checkableImageButton3.setChecked(false);
-                    if (musicFragment == null) {
-                        Log.e("MusicFragment", "is null, new MusicFragment");
-                        musicFragment = new MusicFragment();
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content, musicFragment).addToBackStack(null).commit();
+                    viewPager.setCurrentItem(1);
                     break;
                 case R.id.thirdIb:
                     checkableImageButton1.setChecked(false);
                     checkableImageButton2.setChecked(false);
-                    if (friendFragment == null) {
-                        friendFragment = new FriendFragment();
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content, friendFragment).addToBackStack(null).commit();
+                    viewPager.setCurrentItem(2);
             }
         }
     }

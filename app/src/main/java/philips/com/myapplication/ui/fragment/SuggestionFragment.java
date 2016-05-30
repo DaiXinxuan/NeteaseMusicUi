@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.Scroller;
 
 
-import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ import philips.com.myapplication.R;
 import philips.com.myapplication.adapter.RecyclerListAdapter;
 import philips.com.myapplication.adapter.ViewPagerPictureAdapter;
 import philips.com.myapplication.bean.SuggestMusicBean;
-import philips.com.myapplication.imageloader.ImageLoader;
 
 /**
  * Created by 310231492 on 2016/3/21.
@@ -38,6 +36,7 @@ public class SuggestionFragment extends Fragment {
     private ViewPager viewPager;
     private ArrayList<View> viewArrayList;
     private ArrayList<SuggestMusicBean> arrayList;
+    private RecyclerListAdapter recyclerListAdapter;
 
     private int WHAT_AUTO_PLAY = 1000;
     private int autoPlayDuration = 5000;
@@ -90,13 +89,15 @@ public class SuggestionFragment extends Fragment {
     private void initView(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.music_home_list);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
-        RecyclerListAdapter recyclerListAdapter = new RecyclerListAdapter(getContext(), arrayList);
+        recyclerListAdapter = new RecyclerListAdapter(getContext(), arrayList);
         recyclerView.setAdapter(recyclerListAdapter);
         recyclerView.setNestedScrollingEnabled(false);
+        initRecyclerHeader(recyclerView);
+    }
 
+    private void initRecyclerHeader(RecyclerView recyclerView) {
         View header = LayoutInflater.from(getContext()).inflate(R.layout.recyclerheader, recyclerView, false);
         recyclerListAdapter.setHeaderView(header);
-//        RecyclerViewHeader header = (RecyclerViewHeader) view.findViewById(R.id.header);
         viewPager = (ViewPager) header.findViewById(R.id.suggestion_viewpager);
         viewArrayList = new ArrayList<>();
         ImageView imageView1 = new ImageView(getContext());
@@ -168,7 +169,6 @@ public class SuggestionFragment extends Fragment {
             }
         });
         setSliderTransformDuration(scrollDuration);
-//        header.attachTo(recyclerView);
     }
 
 

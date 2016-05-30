@@ -1,35 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="@dimen/padding_standard"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"/>
-
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:padding="@dimen/padding_large"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/icon"
-        android:layout_marginLeft="@dimen/padding_large"
-        />
+        >
 
-    <TextView
-        android:id="@+id/introduction"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/github_g"/>
+
+        <TextView
+            android:id="@+id/mainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:text="@string/localmusic"
+            />
+
+        <TextView
+            android:id="@+id/introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navigation_back"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mainText"
+            android:text="(85)"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="50dp"
+        android:background="@color/gray_background"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:padding="@dimen/padding_large"
         android:layout_height="wrap_content"
-        android:textColor="@color/navigation_back"
-        android:textSize="13sp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/mainText"
-        />
+        >
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/steam2_g"/>
+
+        <TextView
+            android:id="@+id/mainText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/icon1"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:text="@string/recentplay"
+            />
+
+        <TextView
+            android:id="@+id/introduction1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navigation_back"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mainText1"
+            android:text="(100)"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="50dp"
+        android:background="@color/gray_background"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:focusable="true"
+        android:padding="@dimen/padding_large"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/icon2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/facebook2_g"/>
+
+        <TextView
+            android:id="@+id/mainText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/icon2"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:text="@string/downloadmanage"
+            />
+
+        <TextView
+            android:id="@+id/introduction2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navigation_back"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mainText2"
+            android:text="(93)"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="50dp"
+        android:background="@color/gray_background"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:focusable="true"
+        android:padding="@dimen/padding_large"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/icon3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/stackoverflow_g"/>
+
+        <TextView
+            android:id="@+id/mainText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/icon3"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:text="@string/mysinger"
+            />
+
+        <TextView
+            android:id="@+id/introduction3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navigation_back"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mainText3"
+            android:text="(4)"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="50dp"
+        android:background="@color/gray_background"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:focusable="true"
+        android:padding="@dimen/padding_large"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/icon4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/twitter_g"/>
+
+        <TextView
+            android:id="@+id/mainText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/icon4"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:text="@string/myradio"
+            />
+
+        <TextView
+            android:id="@+id/introduction4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navigation_back"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mainText4"
+            android:text="(3)"
+            />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="50dp"
+        android:background="@color/gray_background"/>
+</LinearLayout>

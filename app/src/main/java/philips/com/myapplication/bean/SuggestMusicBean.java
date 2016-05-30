@@ -1,33 +1,26 @@
 package philips.com.myapplication.bean;
 
-import android.graphics.Bitmap;
-
 /**
  * Created by 310231492 on 2016/4/20.
  */
 public class SuggestMusicBean {
     private String totalListenedCount;
-    private Bitmap bitmap;
     private int resId;
+    private String imgUrl;
     private String title;
-
-    public SuggestMusicBean(Bitmap bitmap, String title) {
-        this.bitmap = bitmap;
-        this.title = title;
-    }
 
     public SuggestMusicBean(int resId, String title) {
         this.resId = resId;
         this.title = title;
     }
 
-    public SuggestMusicBean(Bitmap bitmap, String title, String totalListenedCount) {
-        this(bitmap, title);
-        this.totalListenedCount = totalListenedCount;
+    public SuggestMusicBean(String url, String title) {
+        this.imgUrl = url;
+        this.title = title;
     }
 
-    public SuggestMusicBean(int resId, String title, String totalListenedCount) {
-        this(resId, title);
+    public SuggestMusicBean(String imgUrl, String title, String totalListenedCount) {
+        this(imgUrl, title);
         this.totalListenedCount = totalListenedCount;
     }
 
@@ -55,11 +48,11 @@ public class SuggestMusicBean {
         this.totalListenedCount = totalListenedCount;
     }
 
-    public Bitmap getBitmap() {
-        return bitmap;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

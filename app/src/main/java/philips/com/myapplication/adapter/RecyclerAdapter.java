@@ -37,6 +37,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             icon = (ImageView) itemView.findViewById(R.id.icon);
             mainText = (TextView) itemView.findViewById(R.id.mainText);
             introduction = (TextView) itemView.findViewById(R.id.introduction);
+            itemView.setClickable(true);
             itemView.setOnClickListener(this);
         }
 
@@ -62,9 +63,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             arrayList.add(new MusicListBean("http://img.my.csdn.net/uploads/201309/01/1378037177_1254.jpg", context.getString(R.string.downloadmanage), "(93)"));
             arrayList.add(new MusicListBean("http://img.my.csdn.net/uploads/201309/01/1378037152_6352.jpg", context.getString(R.string.mysinger), "(4)"));
         } else {
-            arrayList.add(new MusicListBean(R.mipmap.sample5, context.getString(R.string.localmusic), "(85)"));
-            arrayList.add(new MusicListBean(R.mipmap.sample6, context.getString(R.string.recentplay), "(100)"));
-            arrayList.add(new MusicListBean(R.mipmap.sample7, context.getString(R.string.downloadmanage), "(93)"));
+            arrayList.add(new MusicListBean("http://o6quza64p.bkt.clouddn.com/sample13.jpg", context.getString(R.string.localmusic), "(85)"));
+            arrayList.add(new MusicListBean("http://o6quza64p.bkt.clouddn.com/sample12.jpg", context.getString(R.string.recentplay), "(100)"));
+            arrayList.add(new MusicListBean("http://o6quza64p.bkt.clouddn.com/sample11.jpg", context.getString(R.string.downloadmanage), "(93)"));
         }
     }
 
@@ -84,7 +85,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         MusicListBean musicListBean = arrayList.get(position);
         if (musicListBean.getImgId() == 0) {
-            RemoteBitmapWorkerTask remoteBitmapWorkerTask = new RemoteBitmapWorkerTask(holder.icon, 100, 100, context);
+            RemoteBitmapWorkerTask remoteBitmapWorkerTask = new RemoteBitmapWorkerTask(holder.icon, 300, 300, context);
             remoteBitmapWorkerTask.execute(musicListBean.getImgUrl());
         } else {
             LocalBitmapWorkerTask localBitmapWorkerTask = new LocalBitmapWorkerTask(context, holder.icon, 100, 100);

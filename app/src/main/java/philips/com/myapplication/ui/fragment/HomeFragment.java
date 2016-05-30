@@ -89,6 +89,7 @@ public class HomeFragment extends Fragment{
             }
         });
         viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(4);
     }
 
     private void adjustCutOffRule() {

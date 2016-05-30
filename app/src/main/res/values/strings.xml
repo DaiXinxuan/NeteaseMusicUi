@@ -23,4 +23,9 @@
     <string name="latestmusic">最新音乐</string>
     <string name="suggestion_mv">推荐MV</string>
     <string name="player_radio">主播电台</string>
+    <string name="mymessage">我的消息</string>
+    <string name="pointmarket">积分商城</string>
+    <string name="payformusic">付费音乐包</string>
+    <string name="listen_recognize">听歌识曲</string>
+    <string name="change_theme_color">主题换肤</string>
 </resources>
