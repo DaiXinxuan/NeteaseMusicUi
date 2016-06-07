@@ -3,6 +3,7 @@ package philips.com.myapplication.viewholder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,12 +16,16 @@ public class MusicViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public ImageView musicImg;
     public TextView musicDes;
     public RelativeLayout musicRela;
+    public LinearLayout creator_ll;
+    public TextView creator;
 
     public MusicViewHolder(View itemView) {
         super(itemView);
         musicImg = (ImageView) itemView.findViewById(R.id.music_img);
         musicDes = (TextView) itemView.findViewById(R.id.music_des);
         musicRela = (RelativeLayout) itemView.findViewById(R.id.music_rela);
+        creator_ll = (LinearLayout) itemView.findViewById(R.id.creator_ll);
+        creator = (TextView) itemView.findViewById(R.id.creator);
         itemView.setOnClickListener(this);
     }
 

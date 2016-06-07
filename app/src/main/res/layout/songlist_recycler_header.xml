@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="@dimen/padding_small"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/blue_vertical_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_width="3dp"
+        android:layout_height="20dp"
+        android:background="@color/actionBarColor"/>
+
+    <TextView
+        android:layout_toRightOf="@+id/blue_vertical_bar"
+        android:layout_marginLeft="@dimen/padding_standard"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/allsonglist"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:id="@+id/choose_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/choose_type_bg">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/windows8_g"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/padding_small"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_type"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
