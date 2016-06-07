@@ -1,6 +1,7 @@
 package philips.com.myapplication.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -112,9 +115,8 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             dealMusicList(position, viewHolder);
         } else {
             MusicViewHolder viewHolder = (MusicViewHolder) holder;
-            LocalBitmapWorkerTask task = new LocalBitmapWorkerTask(context,
-                    viewHolder.musicImg, 1500,500);
-            task.execute(list.get(position - 2).getResId());
+            String url = list.get(position - 2).getImgUrl();
+            Picasso.with(context).load(url).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.musicImg);
             viewHolder.musicDes.setText(list.get(position - 2).getTitle());
         }
     }
@@ -156,36 +158,30 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public void dealOneMusic(int position, MusicViewHolder viewHolder) {
         if (position > RecycleUtil.TITLE1 && position <RecycleUtil.TITLE2 ) {
-            LocalBitmapWorkerTask task = new LocalBitmapWorkerTask(context,
-                    viewHolder.musicImg, 500, 500);
-            task.execute(list.get(position - 2).getResId());
+            String url = list.get(position - 2).getImgUrl();
+            Picasso.with(context).load(url).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.musicImg);
             viewHolder.musicDes.setText(list.get(position - 2).getTitle());
         } else {
-            LocalBitmapWorkerTask task = new LocalBitmapWorkerTask(context,
-                    viewHolder.musicImg, 500, 500);
-            task.execute(list.get(position - 3).getResId());
+            String url = list.get(position - 3).getImgUrl();
+            Picasso.with(context).load(url).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.musicImg);
             viewHolder.musicDes.setText(list.get(position - 3).getTitle());
         }
     }
 
     public void dealMusicList(int position, MusicListViewHolder viewHolder) {
         if (position == RecycleUtil.TWO2) {
-            LocalBitmapWorkerTask task = new LocalBitmapWorkerTask(context,
-                    viewHolder.firstImg, 1000, 500);
-            task.execute(list.get(position - 4).getResId());
+            String url = list.get(position - 4).getImgUrl();
+            Picasso.with(context).load(url).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.firstImg);
             viewHolder.firstDes.setText(list.get(position - 4).getTitle());
-            LocalBitmapWorkerTask task1 = new LocalBitmapWorkerTask(context,
-                    viewHolder.secondImg, 1000, 500);
-            task1.execute(list.get(position - 3).getResId());
+            String url1 = list.get(position - 3).getImgUrl();
+            Picasso.with(context).load(url1).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.secondImg);
             viewHolder.secondDes.setText(list.get(position - 3).getTitle());
         } else {
-            LocalBitmapWorkerTask task = new LocalBitmapWorkerTask(context,
-                    viewHolder.firstImg, 1000, 500);
-            task.execute(list.get(position - 3).getResId());
+            String url = list.get(position - 3).getImgUrl();
+            Picasso.with(context).load(url).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.firstImg);
             viewHolder.firstDes.setText(list.get(position - 3).getTitle());
-            LocalBitmapWorkerTask task1 = new LocalBitmapWorkerTask(context,
-                    viewHolder.secondImg, 1000, 500);
-            task1.execute(list.get(position - 2).getResId());
+            String url1 = list.get(position - 2).getImgUrl();
+            Picasso.with(context).load(url1).fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(viewHolder.secondImg);
             viewHolder.secondDes.setText(list.get(position - 2).getTitle());
         }
     }

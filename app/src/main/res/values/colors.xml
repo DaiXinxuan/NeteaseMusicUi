@@ -10,4 +10,5 @@
     <color name="textColor">#505050</color>
     <color name="white">#FFFFFF</color>
     <color name="gray_background">#DBDBDB</color>
+    <color name="black">#000000</color>
 </resources>

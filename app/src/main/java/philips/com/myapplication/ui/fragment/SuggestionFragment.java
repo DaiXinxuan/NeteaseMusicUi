@@ -174,36 +174,36 @@ public class SuggestionFragment extends Fragment {
 
     public ArrayList<SuggestMusicBean> initMusicData() {
         ArrayList<SuggestMusicBean> arrayList = new ArrayList<>();
-        arrayList.add(new SuggestMusicBean(R.mipmap.daze, "在黑夜里，寻求心灵的慰藉"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample2, "史诗配乐，可以让你沸腾的音乐"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample1, "现实永远装不满梦想的田字格"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample3, "日系女音中细腻的爱情"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample4, "黑白键上破茧绽放的羽翼"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.kano, "在黑夜里，寻求心灵的慰藉"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/daze.jpeg", "在黑夜里，寻求心灵的慰藉"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample2.jpg", "史诗配乐，可以让你沸腾的音乐"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample1.jpg", "现实永远装不满梦想的田字格"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample3.jpg", "日系女音中细腻的爱情"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample4.jpg", "黑白键上破茧绽放的羽翼"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/kano.jpg", "在黑夜里，寻求心灵的慰藉"));
 
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor1, "网易音乐人 第39期"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor2, "探索频道 第116期"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor1.jpg", "网易音乐人 第39期"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor2.jpeg", "探索频道 第116期"));
 
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample5, "一周热评 第86期 你有什么资格不努力"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample5.jpg", "一周热评 第86期 你有什么资格不努力"));
 
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample6, "Losing For You"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample7, "Losing you"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample8, "恋愛"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample9, "东方入眠抄"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample10, "花束お君に"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample11, "恋に咲け"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample6.jpg", "Losing For You"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample7.jpg", "Losing you"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample8.jpg", "恋愛"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample9.jpg", "东方入眠抄"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample10.jpg", "花束お君に"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample11.jpg", "恋に咲け"));
 
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor3, "在，也不见"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor4, "Needed Me"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor5, "One More Time, One more Chance"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample5, "See you again"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor3.jpg", "在，也不见"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor4.jpg", "Needed Me"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor5.jpg", "One More Time, One more Chance"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample5.jpg", "See you again"));
 
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample12, "Losing For You"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.sample13, "Losing you"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.kano, "恋愛"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor3, "东方入眠抄"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor4, "花束お君に"));
-        arrayList.add(new SuggestMusicBean(R.mipmap.hor2, "恋に咲け"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample12.jpg", "Losing For You"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/sample13.jpg", "Losing you"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/kano.jpg", "恋愛"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor3.jpg", "东方入眠抄"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor4.jpg", "花束お君に"));
+        arrayList.add(new SuggestMusicBean("http://o6quza64p.bkt.clouddn.com/hor2.jpeg", "恋に咲け"));
         return arrayList;
     }
 

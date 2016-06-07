@@ -48,7 +48,7 @@ public class MusicFragment extends Fragment {
         linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
         createSongList = (RecyclerView) view.findViewById(R.id.createdSongList);
         createSongList.setLayoutManager(linearLayoutManager1);
-        createSongList.setAdapter(new RecyclerAdapter(getContext(), 2, new RecyclerAdapter.OnRecyclerViewItemClickListener() {
+        createSongList.setAdapter(new RecyclerAdapter(getContext(), 1, new RecyclerAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(int position) {
 
@@ -60,7 +60,7 @@ public class MusicFragment extends Fragment {
         linearLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL);
         collectSongList = (RecyclerView) view.findViewById(R.id.collectedSongList);
         collectSongList.setLayoutManager(linearLayoutManager2);
-        collectSongList.setAdapter(new RecyclerAdapter(getContext(), 3, new RecyclerAdapter.OnRecyclerViewItemClickListener() {
+        collectSongList.setAdapter(new RecyclerAdapter(getContext(), 2, new RecyclerAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(int position) {
 
