@@ -27,6 +27,7 @@ public class SongListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     private final static int TYPE_HEADER = 0;
     private final static int TYPE_ABNORMAL_LIST = 1;
     private final static int TYPE_NORMAL_LIST = 2;
+    private final static int TYPE_FOOTER = 3;
 
     private View headerView;
     private ArrayList<SongListBean> songListBeans;
@@ -51,7 +52,12 @@ public class SongListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             layoutParams.height = (windowManager.getDefaultDisplay().getWidth() / 12) * 5;
             icon.setLayoutParams(layoutParams);
             return new MusicViewHolder(view);
-        } else return null;
+        } else if (viewType == TYPE_FOOTER) {
+            view = getViewHolder(R.layout.item_foot, parent, true);
+            return new Holder(view);
+        } else{
+            return null;
+        }
     }
 
     public View getViewHolder(int resource, ViewGroup parent, boolean isFullSpan) {
@@ -81,6 +87,8 @@ public class SongListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             musicViewHolder.musicDes.setText(songListBean.getListName());
             Picasso.with(context).load(songListBean.getIconUrl()).fit().config(Bitmap.Config.RGB_565)
                     .placeholder(R.mipmap.loading).into(musicViewHolder.musicImg);
+        } else if (viewType == TYPE_FOOTER) {
+            return;
         }
 
     }
@@ -89,6 +97,8 @@ public class SongListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public int getItemViewType(int position) {
         if (position == 0) {
             return TYPE_HEADER;
+        } else if (position + 1 == getItemCount()) {
+            return TYPE_FOOTER;
         } else if (position == 1) {
             return TYPE_ABNORMAL_LIST;
         } else {
@@ -108,16 +118,13 @@ public class SongListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        return songListBeans.size() + 1;
+        return songListBeans.size() + 2;
     }
 
     class Holder extends RecyclerView.ViewHolder {
 
         public Holder(View itemView) {
             super(itemView);
-            if(itemView == headerView) {
-                return;
-            }
         }
     }
 

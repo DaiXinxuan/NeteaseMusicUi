@@ -30,6 +30,7 @@
         <philips.com.myapplication.customview.CircleIndicator
             android:id="@+id/personal_circle"
             android:layout_marginLeft="@dimen/padding_large"
+            android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:resource="@mipmap/bubble2"
@@ -54,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/padding_large"
             app:resource="@mipmap/star_empty"
             app:resourcePressed="@mipmap/star_full"
             app:text="@string/cloud_music"
