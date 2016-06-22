@@ -12,6 +12,7 @@
         android:background="@color/actionBarColor"/>
 
     <TextView
+        android:id="@+id/title_text"
         android:layout_toRightOf="@+id/blue_vertical_bar"
         android:layout_marginLeft="@dimen/padding_standard"
         android:layout_centerVertical="true"

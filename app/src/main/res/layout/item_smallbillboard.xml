@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/small_billboard_img"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        tools:src="@mipmap/sample8"/>
+
+    <LinearLayout
+        android:layout_toRightOf="@+id/small_billboard_img"
+        android:paddingLeft="@dimen/padding_large"
+        android:paddingBottom="@dimen/padding_large"
+        android:paddingTop="@dimen/padding_standard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/billboard_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="云音乐ACG音乐榜"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:textSize="13sp"
+            tools:text="每周四更新"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_below="@+id/small_billboard_img"
+        android:layout_toRightOf="@+id/small_billboard_img"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginTop="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_background"
+        />
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/big_billboard_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:src="@mipmap/sample8"/>
+
+    <LinearLayout
+        android:layout_toRightOf="@+id/big_billboard_img"
+        android:padding="@dimen/padding_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/first_song"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="1.竜神の剣を喰らえ"/>
+        <TextView
+            android:id="@+id/second_song"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:textSize="13sp"
+            tools:text="2.竜が我が敵を喰らえ"/>
+        <TextView
+            android:id="@+id/third_song"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:textSize="13sp"
+            tools:text="3.Justice rains"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_below="@+id/big_billboard_img"
+        android:layout_toRightOf="@+id/big_billboard_img"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginTop="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_background"
+        />
+</RelativeLayout>
