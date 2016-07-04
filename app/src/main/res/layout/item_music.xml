@@ -55,6 +55,28 @@
                     tools:text="佐仓小小千代"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ordernum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true">
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@mipmap/start_white"
+                    android:layout_gravity="center_vertical"
+                    />
+                <TextView
+                    android:id="@+id/order_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:text="24782订阅"/>
+            </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="@dimen/padding_small"
+    android:paddingRight="@dimen/padding_small"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/title_pager"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="7dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/indicators"
+        android:layout_below="@+id/title_pager"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ></LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/indicators"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_very_large"
+        android:paddingRight="@dimen/padding_standard"
+        android:paddingTop="@dimen/padding_standard"
+        android:paddingBottom="@dimen/padding_standard"
+        android:background="@drawable/introduction_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/padding_standard"
+            android:paddingBottom="@dimen/padding_standard"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_list"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_below="@+id/radio_ranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/introduction1"
+                    android:textColor="@color/actionBarColor"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/updateeverday"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:layout_gravity="bottom"
+                    android:src="@mipmap/sample1"/>
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/sample11"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="@dimen/padding_very_large"
+                android:src="@mipmap/daze"/>
+
+        </FrameLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -18,6 +18,8 @@ public class MusicViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public RelativeLayout musicRela;
     public LinearLayout creator_ll;
     public TextView creator;
+    public LinearLayout ordernum;
+    public TextView orderTxt;
 
     public MusicViewHolder(View itemView) {
         super(itemView);
@@ -26,6 +28,8 @@ public class MusicViewHolder extends RecyclerView.ViewHolder implements View.OnC
         musicRela = (RelativeLayout) itemView.findViewById(R.id.music_rela);
         creator_ll = (LinearLayout) itemView.findViewById(R.id.creator_ll);
         creator = (TextView) itemView.findViewById(R.id.creator);
+        ordernum = (LinearLayout) itemView.findViewById(R.id.ordernum);
+        orderTxt = (TextView) itemView.findViewById(R.id.order_txt);
         itemView.setOnClickListener(this);
     }
 

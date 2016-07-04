@@ -11,6 +11,17 @@
         android:layout_height="70dp"
         tools:src="@mipmap/sample8"/>
 
+    <ImageView
+        android:id="@+id/play_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/play2"
+        android:visibility="gone"
+        android:layout_alignRight="@+id/small_billboard_img"
+        android:layout_marginBottom="@dimen/padding_small"
+        android:layout_marginRight="@dimen/padding_small"
+        android:layout_alignBottom="@+id/small_billboard_img"/>
+
     <LinearLayout
         android:layout_toRightOf="@+id/small_billboard_img"
         android:paddingLeft="@dimen/padding_large"
