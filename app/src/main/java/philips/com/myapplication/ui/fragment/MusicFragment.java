@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.LruCache;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,6 +34,8 @@ public class MusicFragment extends Fragment {
     private ImageView arrow1;
     private ImageView arrow2;
     private ExpandedPanel expandedPanel1, expandedPanel2;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private boolean isRefresh = false;
 
     @Nullable
     @Override
@@ -44,6 +47,25 @@ public class MusicFragment extends Fragment {
 
 
     private void initView(View view) {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.srl);
+        //设置手指在屏幕下拉多少距离后触发刷新
+        swipeRefreshLayout.setDistanceToTriggerSync(300);
+        swipeRefreshLayout.setColorSchemeResources(R.color.actionBarColor);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (!isRefresh) {
+                    isRefresh = true;
+                    swipeRefreshLayout.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            swipeRefreshLayout.setRefreshing(false);
+                            isRefresh = false;
+                        }
+                    }, 2000);
+                }
+            }
+        });
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
         linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
         createSongList = (RecyclerView) view.findViewById(R.id.createdSongList);
