@@ -132,8 +132,8 @@ public class ExpandedPanel extends LinearLayout {
         // First, measure how high content wants to be
         mContent.measure(widthMeasureSpec, MeasureSpec.UNSPECIFIED);
         mContentHeight = mContent.getMeasuredHeight();
-        Log.v("cHeight", mContentHeight + "");
-        Log.v("cCollapseHeight", mCollapsedHeight + "");
+//        Log.v("cHeight", mContentHeight + "");
+//        Log.v("cCollapseHeight", mCollapsedHeight + "");
 
         if (mContentHeight < mCollapsedHeight) {
             mHandle.setVisibility(View.GONE);

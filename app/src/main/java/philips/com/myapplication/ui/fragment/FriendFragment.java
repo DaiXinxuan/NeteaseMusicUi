@@ -40,7 +40,7 @@ public class FriendFragment extends Fragment {
 
     private void initView(View view) {
         fragments = new ArrayList<>();
-        fragments.add(new RankingListFragment());
+        fragments.add(new DynamicFragment());
         fragments.add(new SongListFragment());
         fragments.add(new RadioFragment());
         textViews[0] = (TextView) view.findViewById(R.id.dynamic);

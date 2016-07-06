@@ -56,4 +56,7 @@
     <string name="greatintroduction">精彩节目推荐</string>
     <string name="eve_suggest">每天电台精选-订阅更精彩</string>
     <string name="popurlarradio">热门电台</string>
+    <string name="transmit">转发</string>
+    <string name="share_music">分享单曲:</string>
+    <string name="musicloved">——根据你喜欢的单曲推荐</string>
 </resources>
