@@ -59,4 +59,6 @@
     <string name="transmit">转发</string>
     <string name="share_music">分享单曲:</string>
     <string name="musicloved">——根据你喜欢的单曲推荐</string>
+    <string name="true_picture">原图</string>
+    <string name="save">保存</string>
 </resources>

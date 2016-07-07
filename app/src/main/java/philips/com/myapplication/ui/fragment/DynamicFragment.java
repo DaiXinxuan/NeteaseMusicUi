@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import philips.com.myapplication.R;
 import philips.com.myapplication.adapter.ShareRecyclerAdapter;
 import philips.com.myapplication.bean.ShareMusicBean;
+import philips.com.myapplication.customview.DividerItemDecoration;
 
 /**
  * Created by 310231492 on 2016/7/5.
@@ -32,6 +33,7 @@ public class DynamicFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         initData();
         shareRecyclerAdapter = new ShareRecyclerAdapter(getContext(), shareMusicBeans);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(shareRecyclerAdapter);
         return view;
     }

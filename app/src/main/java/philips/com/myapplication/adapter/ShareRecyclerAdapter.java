@@ -1,6 +1,7 @@
 package philips.com.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import philips.com.myapplication.R;
 import philips.com.myapplication.bean.ShareMusicBean;
 import philips.com.myapplication.customview.CircleImageView;
+import philips.com.myapplication.ui.activity.GalleryActivity;
 
 /**
  * Created by 310231492 on 2016/7/5.
@@ -60,9 +62,12 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
             ShareMusicBean shareMusicBean = shareMusicBeans.get(position);
             if (shareMusicBean.getImgs() != null && shareMusicBean.getImgs().size() > 0 &&
                     shareMusicBean.getImgs().size() < 5) {
+                ArrayList<String> imgUrls = shareMusicBean.getImgs();
+
                 DisplayMetrics displayMetrics = new DisplayMetrics();
                 WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
                 windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+
                 int screenWidth = displayMetrics.widthPixels;
                 if (shareMusicBean.getImgs().size() == 1) {
                     shareViewHolder.onrPictureLl.setVisibility(View.VISIBLE);
@@ -75,6 +80,8 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
                     Picasso.with(context).load(shareMusicBean.getImgs().get(0))
                             .fit().config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading)
                             .into(shareViewHolder.onePicture);
+
+                    shareViewHolder.onePicture.setOnClickListener(new ImgOnClickListener(imgUrls,0));
                 } else if (shareMusicBean.getImgs().size() == 2) {
                     shareViewHolder.twoPicturesLl.setVisibility(View.VISIBLE);
                     shareViewHolder.onrPictureLl.setVisibility(View.GONE);
@@ -88,6 +95,9 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
                             .config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(shareViewHolder.twoPicsFirst);
                     Picasso.with(context).load(shareMusicBean.getImgs().get(1)).fit()
                             .config(Bitmap.Config.RGB_565).placeholder(R.mipmap.loading).into(shareViewHolder.twoPicsSecond);
+
+                    shareViewHolder.twoPicsFirst.setOnClickListener(new ImgOnClickListener(imgUrls,0));
+                    shareViewHolder.twoPicsSecond.setOnClickListener(new ImgOnClickListener(imgUrls,1));
                 } else if (shareMusicBean.getImgs().size() == 3) {
                     shareViewHolder.threePicturesLl.setVisibility(View.VISIBLE);
                     shareViewHolder.onrPictureLl.setVisibility(View.GONE);
@@ -104,6 +114,10 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
                             placeholder(R.mipmap.loading).into(shareViewHolder.threePicsSecond);
                     Picasso.with(context).load(shareMusicBean.getImgs().get(2)).fit().config(Bitmap.Config.RGB_565).
                             placeholder(R.mipmap.loading).into(shareViewHolder.threePicsThird);
+
+                    shareViewHolder.threePicsFirst.setOnClickListener(new ImgOnClickListener(imgUrls,0));
+                    shareViewHolder.threePicsSecond.setOnClickListener(new ImgOnClickListener(imgUrls,1));
+                    shareViewHolder.threePicsThird.setOnClickListener(new ImgOnClickListener(imgUrls,2));
                 } else if (shareMusicBean.getImgs().size() == 4) {
                     shareViewHolder.fourPicturesLl.setVisibility(View.VISIBLE);
                     shareViewHolder.onrPictureLl.setVisibility(View.GONE);
@@ -123,6 +137,11 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
                             placeholder(R.mipmap.loading).into(shareViewHolder.fourPicsThird);
                     Picasso.with(context).load(shareMusicBean.getImgs().get(3)).fit().config(Bitmap.Config.RGB_565).
                             placeholder(R.mipmap.loading).into(shareViewHolder.fourPicsFourth);
+
+                    shareViewHolder.fourPicsFirst.setOnClickListener(new ImgOnClickListener(imgUrls,0));
+                    shareViewHolder.fourPicsSecond.setOnClickListener(new ImgOnClickListener(imgUrls,1));
+                    shareViewHolder.fourPicsThird.setOnClickListener(new ImgOnClickListener(imgUrls,2));
+                    shareViewHolder.fourPicsFourth.setOnClickListener(new ImgOnClickListener(imgUrls,3));
                 }
             } else {
                 shareViewHolder.onrPictureLl.setVisibility(View.GONE);
@@ -180,6 +199,7 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
             twoPicturesLl = (LinearLayout) itemView.findViewById(R.id.two_pictures_ll);
             threePicturesLl = (LinearLayout) itemView.findViewById(R.id.three_pictures_ll);
             fourPicturesLl = (LinearLayout) itemView.findViewById(R.id.four_pictures_ll);
+
             onePicture = (ImageView) itemView.findViewById(R.id.one_picture_img);
             twoPicsFirst = (ImageView) itemView.findViewById(R.id.two_pictures_first);
             twoPicsSecond = (ImageView) itemView.findViewById(R.id.two_pictures_second);
@@ -190,6 +210,7 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
             fourPicsSecond = (ImageView) itemView.findViewById(R.id.four_pictures_second);
             fourPicsThird = (ImageView) itemView.findViewById(R.id.four_pictures_third);
             fourPicsFourth = (ImageView) itemView.findViewById(R.id.four_pictures_fourth);
+
         }
     }
 
@@ -210,4 +231,21 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
         return (int) (pxValue / scale + 0.5f);
     }
 
+    class ImgOnClickListener implements View.OnClickListener{
+        private ArrayList<String> urls;
+        private int position;
+
+        public ImgOnClickListener(ArrayList<String> urls, int position) {
+            this.urls = urls;
+            this.position = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, GalleryActivity.class);
+            intent.putStringArrayListExtra("urls", urls);
+            intent.putExtra("position", position);
+            context.startActivity(intent);
+        }
+    }
 }

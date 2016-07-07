@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+     <android.support.v4.view.ViewPager
+        android:id="@+id/gallery"
+        android:layout_marginTop="@dimen/padding_standard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_standard"
+        android:layout_marginBottom="@dimen/padding_standard"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/truepicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_small"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingLeft="@dimen/padding_very_large"
+            android:paddingRight="@dimen/padding_very_large"
+            android:background="@drawable/gallery_bg"
+            android:textColor="@color/white"
+            android:text="@string/true_picture"/>
+
+        <TextView
+            android:id="@+id/percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            tools:text="1/4"
+            />
+
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingTop="@dimen/padding_small"
+            android:paddingBottom="@dimen/padding_small"
+            android:paddingLeft="@dimen/padding_very_large"
+            android:paddingRight="@dimen/padding_very_large"
+            android:background="@drawable/gallery_bg"
+            android:textColor="@color/white"
+            android:text="@string/save"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
