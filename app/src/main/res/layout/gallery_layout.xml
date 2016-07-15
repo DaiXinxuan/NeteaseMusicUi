@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-     <android.support.v4.view.ViewPager
+     <philips.com.myapplication.customview.FixedViewPager
         android:id="@+id/gallery"
         android:layout_marginTop="@dimen/padding_standard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"></philips.com.myapplication.customview.FixedViewPager>
 
     <RelativeLayout
         android:layout_gravity="bottom"

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +15,8 @@ import java.util.ArrayList;
 
 import philips.com.myapplication.R;
 import philips.com.myapplication.adapter.GalleryViewPagerAdapter;
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by 310231492 on 2016/7/7.
@@ -41,26 +42,27 @@ public class GalleryActivity extends Activity {
         views = new ArrayList<>();
         if (imgUrls != null && imgUrls.size() > 0){
             size = imgUrls.size();
-            percentage.setText((position+1) +"/" + size);
+            percentage.setText( (position+1) +"/" + size);
             for (String url: imgUrls) {
-                ImageView imageView = new ImageView(getApplicationContext());
+                PhotoView imageView = new PhotoView(getApplicationContext());
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                imageView.setOnClickListener(new View.OnClickListener() {
+                imageView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onPhotoTap(View view, float x, float y) {
                         GalleryActivity.this.finish();
                     }
                 });
                 Picasso.with(getApplicationContext()).load(url).config(Bitmap.Config.RGB_565).into(imageView);
+                imageView.setScaleLevels(0.5f, 1.0f, 1.5f);
                 views.add(imageView);
             }
         }
         viewPager.setAdapter(new GalleryViewPagerAdapter(views));
+        viewPager.setCurrentItem(position);
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-
             @Override
             public void onPageSelected(int position) {
-                percentage.setText((position + 1) + "/" + size);
+                percentage.setText( (position + 1) + "/" + size);
                 super.onPageSelected(position);
             }
         });
