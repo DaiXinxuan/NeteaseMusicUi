@@ -58,8 +58,14 @@ public class MainActivity extends AppCompatActivity implements CheckableImageBut
         setSupportActionBar(toolbar);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            private MenuItem mPreMenuItem;
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                if (mPreMenuItem != null) {
+                    mPreMenuItem.setChecked(false);
+                }
+                item.setChecked(true);
+                mPreMenuItem = item;
                 switch (item.getItemId()) {
                     case R.id.message:
                         break;

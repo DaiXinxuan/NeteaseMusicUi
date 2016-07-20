@@ -3,19 +3,23 @@
     <group android:id="@+id/grp1" >
         <item
             android:id="@+id/message"
+            android:checkable="true"
             android:icon="@mipmap/bubbles_g"
             android:title="@string/mymessage"/>
         <item
             android:id="@+id/store"
+            android:checkable="true"
             android:icon="@mipmap/steam2_g"
             android:title="@string/pointmarket" />
         <item
             android:id="@+id/vip"
+            android:checkable="true"
             android:icon="@mipmap/vip"
             android:title="@string/vip_center"/>
         <item
             android:id="@+id/listen_online"
             android:icon="@mipmap/folder"
+            android:checkable="true"
             android:title="@string/listen_online"/>
     </group>
     <item android:title="">
