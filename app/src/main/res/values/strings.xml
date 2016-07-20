@@ -61,4 +61,11 @@
     <string name="musicloved">——根据你喜欢的单曲推荐</string>
     <string name="true_picture">原图</string>
     <string name="save">保存</string>
+    <string name="vip_center">会员中心</string>
+    <string name="listen_online">在线听歌免流量</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="stopintime">定时停止播放</string>
+    <string name="musicclock">音乐闹钟</string>
+    <string name="drive_mode">驾驶模式</string>
+    <string name="myclouddisk">我的云盘</string>
 </resources>

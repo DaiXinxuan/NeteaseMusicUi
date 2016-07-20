@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/background"
     android:layout_width="match_parent"
-    android:layout_height="192dp"
+    android:layout_height="180dp"
     android:padding="15dp"
     android:background="@mipmap/daze">
     <philips.com.myapplication.customview.CircleImageView
         android:id="@+id/headview"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_above="@+id/bottom_ll"
         android:src="@mipmap/kano"
         />
@@ -16,12 +16,13 @@
         android:id="@+id/bottom_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_standard"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="次元夹缝"
             android:textColor="@color/shadowColor"/>
     </LinearLayout>

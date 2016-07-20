@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:id="@+id/grp1" android:checkableBehavior="single">
+    <group android:id="@+id/grp1" >
         <item
             android:id="@+id/message"
             android:icon="@mipmap/bubbles_g"
@@ -10,16 +10,49 @@
             android:icon="@mipmap/steam2_g"
             android:title="@string/pointmarket" />
         <item
-            android:id="@+id/music"
-            android:icon="@mipmap/play2_g"
-            android:title="@string/payformusic"/>
+            android:id="@+id/vip"
+            android:icon="@mipmap/vip"
+            android:title="@string/vip_center"/>
+        <item
+            android:id="@+id/listen_online"
+            android:icon="@mipmap/folder"
+            android:title="@string/listen_online"/>
+    </group>
+    <item android:title="">
         <item
             android:id="@+id/twitter"
+            android:checkable="true"
             android:icon="@mipmap/twitter_g"
             android:title="@string/listen_recognize"/>
         <item
             android:id="@+id/window"
+            android:checkable="true"
             android:icon="@mipmap/windows8_g"
             android:title="@string/change_theme_color"/>
-    </group>
+        <item
+            android:id="@+id/music"
+            android:checkable="true"
+            android:icon="@mipmap/bulb"
+            android:title="@string/night_mode"/>
+        <item
+            android:id="@+id/stop_in_time"
+            android:checkable="true"
+            android:title="@string/stopintime"
+            android:icon="@mipmap/clock"/>
+        <item
+            android:id="@+id/music_clock"
+            android:checkable="true"
+            android:title="@string/musicclock"
+            android:icon="@mipmap/alarmclock"/>
+        <item
+            android:id="@+id/drive_mode"
+            android:checkable="true"
+            android:icon="@mipmap/drive"
+            android:title="@string/drive_mode"/>
+        <item
+            android:id="@+id/myclouddisk"
+            android:checkable="true"
+            android:icon="@mipmap/clouddisk"
+            android:title="@string/myclouddisk"/>
+    </item>
 </menu>
