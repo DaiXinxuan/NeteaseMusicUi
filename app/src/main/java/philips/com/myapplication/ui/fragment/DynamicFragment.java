@@ -56,8 +56,6 @@ public class DynamicFragment extends Fragment {
                         }, 1000);
                     }
                 }
-//                int topRowVerticalPosition =
-//                        (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
                 swipeRefreshLayout.setEnabled(layoutManager.findFirstCompletelyVisibleItemPosition() == 0);
             }
         });
