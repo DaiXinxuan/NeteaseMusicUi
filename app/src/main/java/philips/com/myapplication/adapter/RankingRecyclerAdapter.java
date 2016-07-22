@@ -80,6 +80,10 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 Picasso.with(context).load(billBoardBeans.get(position-2).getImgId()).fit().config(Bitmap.Config.RGB_565)
                         .placeholder(R.mipmap.loading).into(smallBillBoardViewHolder.imageView);
             }
+            if (position + 1 == getItemCount()) {
+                int paddingBottom = smallBillBoardViewHolder.relativeLayout.getPaddingBottom();
+                smallBillBoardViewHolder.relativeLayout.setPadding(paddingBottom, paddingBottom, paddingBottom, paddingBottom*9);
+            }
         }
     }
 
