@@ -33,6 +33,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private final static int TYPE_ABNORMAL_LIST = 2;
     private final static int TYPE_FULL_SPAN = 3;
     private final static int TYPE_HEADER = 4;
+    private final static int TYPE_FOOTER = 5;
 
     private View headerView;
 
@@ -47,6 +48,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         if(headerView != null && viewType == TYPE_HEADER) return new Holder(headerView);
+        if (viewType == TYPE_FOOTER) return new Holder(getViewHolder(R.layout.recycler_foot, parent, true));
         if (viewType == TYPE_TITLE) {
             view = getViewHolder(R.layout.item_title, parent, true);
             return new TitleViewHolder(view);
@@ -77,7 +79,6 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public Holder(View itemView) {
             super(itemView);
-            if(itemView == headerView) return;
         }
     }
 
@@ -85,6 +86,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
         if (viewType == TYPE_HEADER) return;
+        if (viewType == TYPE_FOOTER) return;
         if (viewType == TYPE_TITLE) {
             TitleViewHolder viewHolder = (TitleViewHolder) holder;
             dealTitle(position, viewHolder);
@@ -196,6 +198,8 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return TYPE_ABNORMAL_LIST;
         } else if (position == RecycleUtil.FULLSPAN) {
             return TYPE_FULL_SPAN;
+        } else if (position + 1 == getItemCount()){
+            return TYPE_FOOTER;
         } else return TYPE_NORMAL_LIST;
     }
 
@@ -219,7 +223,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return list.size() + 3;
+        return list.size() + 4;
     }
 
 
