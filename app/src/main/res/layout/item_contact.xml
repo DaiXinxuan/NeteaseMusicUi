@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contact_layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/padding_standard"
+    android:paddingRight="@dimen/padding_standard"
+    android:paddingTop="@dimen/padding_standard"
+    android:paddingBottom="@dimen/padding_standard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <philips.com.myapplication.customview.CircleImageView
+        android:id="@+id/contact_icon"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        tools:src="@mipmap/sample2"/>
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_toRightOf="@+id/contact_icon"
+        android:layout_marginLeft="@dimen/padding_standard"
+        android:layout_marginTop="@dimen/padding_standard"
+        tools:text="玩坏少年"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/padding_small"
+        android:src="@mipmap/mail"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+
+</RelativeLayout>

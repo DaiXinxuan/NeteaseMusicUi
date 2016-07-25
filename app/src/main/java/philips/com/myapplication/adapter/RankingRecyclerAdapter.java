@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import philips.com.myapplication.R;
 import philips.com.myapplication.bean.BillBoardBean;
+import philips.com.myapplication.viewholder.Holder;
 import philips.com.myapplication.viewholder.SmallBillBoardViewHolder;
 
 /**
@@ -26,6 +27,7 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private final static int TYPE_TITLE = 0;
     private final static int TYPE_BIG = 1;
     private final static int TYPE_SMALL = 2;
+    private final static int TYPE_FOOTER = 3;
     private ArrayList<BillBoardBean> billBoardBeans;
 
     public RankingRecyclerAdapter(Context context, ArrayList<BillBoardBean> arrayList) {
@@ -46,6 +48,9 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             case TYPE_SMALL:
                 view = LayoutInflater.from(context).inflate(R.layout.item_smallbillboard, parent, false);
                 return new SmallBillBoardViewHolder(view);
+            case TYPE_FOOTER:
+                view = LayoutInflater.from(context).inflate(R.layout.footer, parent, false);
+                return new Holder(view);
         }
         return null;
     }
@@ -53,6 +58,7 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
+        if (viewType == TYPE_FOOTER) return;
         if (viewType == TYPE_TITLE) {
             TitleBillBoardViewHolder titleBillBoardViewHolder = (TitleBillBoardViewHolder) holder;
             if (position == 0)  {
@@ -80,10 +86,6 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 Picasso.with(context).load(billBoardBeans.get(position-2).getImgId()).fit().config(Bitmap.Config.RGB_565)
                         .placeholder(R.mipmap.loading).into(smallBillBoardViewHolder.imageView);
             }
-            if (position + 1 == getItemCount()) {
-                int paddingBottom = smallBillBoardViewHolder.relativeLayout.getPaddingBottom();
-                smallBillBoardViewHolder.relativeLayout.setPadding(paddingBottom, paddingBottom, paddingBottom, paddingBottom*9);
-            }
         }
     }
 
@@ -93,12 +95,16 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return TYPE_TITLE;
         } else if (position >= 1 && position <= 5 ) {
             return TYPE_BIG;
-        } else return  TYPE_SMALL;
+        } else if (position + 1 == getItemCount()) {
+            return TYPE_FOOTER;
+        } else {
+            return  TYPE_SMALL;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return billBoardBeans.size() + 3;
+        return billBoardBeans.size() + 4;
     }
 
     class BigBillBoardViewHolder extends RecyclerView.ViewHolder{
