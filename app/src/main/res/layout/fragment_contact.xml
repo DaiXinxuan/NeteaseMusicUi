@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contact_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         >
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <philips.com.myapplication.customview.SideBar
+        android:id="@+id/sidebar"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/sidebar_bg"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"/>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/letter_rect"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/textColor"
+        app:cardElevation ="12dp"
+        android:layout_width="50dp"
+        android:layout_height="75dp">
+
+        <TextView
+            android:id="@+id/letter_txt"
+            android:textColor="@color/white"
+            android:gravity="center"
+            tools:text="Z"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

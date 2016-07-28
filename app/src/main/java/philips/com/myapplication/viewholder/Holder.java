@@ -10,5 +10,6 @@ public class Holder extends RecyclerView.ViewHolder {
 
     public Holder(View itemView) {
         super(itemView);
+        itemView.setClickable(true);
     }
 }

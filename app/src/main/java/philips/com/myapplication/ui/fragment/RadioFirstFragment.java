@@ -19,6 +19,7 @@ public class RadioFirstFragment extends Fragment{
     private LinearLayout firstRow,secondRow;
     private ImageView img1,img2,img3,img4,img5,img6,img7,img8;
     private TextView text1,text2,text3,text4,text5,text6,text7,text8;
+    private LinearLayout firstLL,seondLL,thirdLL,fourthLL,fifthLL,sixthLL,seventhLL,eighthLL;
 
     @Nullable
     @Override
@@ -31,6 +32,24 @@ public class RadioFirstFragment extends Fragment{
     private void initView(View view) {
         firstRow = (LinearLayout) view.findViewById(R.id.first_row);
         secondRow = (LinearLayout) view.findViewById(R.id.second_row);
+
+        firstLL = (LinearLayout) firstRow.findViewById(R.id.first_ll);
+        seondLL = (LinearLayout) firstRow.findViewById(R.id.second_ll);
+        thirdLL = (LinearLayout) firstRow.findViewById(R.id.third_ll);
+        fourthLL = (LinearLayout) firstRow.findViewById(R.id.fourth_ll);
+        fifthLL = (LinearLayout) secondRow.findViewById(R.id.first_ll);
+        sixthLL = (LinearLayout) secondRow.findViewById(R.id.second_ll);
+        seventhLL = (LinearLayout) secondRow.findViewById(R.id.third_ll);
+        eighthLL = (LinearLayout) secondRow.findViewById(R.id.fourth_ll);
+        firstLL.setClickable(true);
+        seondLL.setClickable(true);
+        thirdLL.setClickable(true);
+        fourthLL.setClickable(true);
+        fifthLL.setClickable(true);
+        sixthLL.setClickable(true);
+        seventhLL.setClickable(true);
+        eighthLL.setClickable(true);
+
         img1 = (ImageView) firstRow.findViewById(R.id.first_img);
         img2 = (ImageView) firstRow.findViewById(R.id.second_img);
         img3 = (ImageView) firstRow.findViewById(R.id.third_img);

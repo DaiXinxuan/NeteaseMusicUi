@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contact_layout"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:attr/selectableItemBackground"
     android:paddingLeft="@dimen/padding_standard"
     android:paddingRight="@dimen/padding_standard"
     android:paddingTop="@dimen/padding_standard"

@@ -76,6 +76,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public NearbyViewHolder(View itemView) {
             super(itemView);
+            itemView.setClickable(true);
             userIcon = (CircleImageView) itemView.findViewById(R.id.user_icon);
             userName = (TextView) itemView.findViewById(R.id.user_name);
             musicName = (TextView) itemView.findViewById(R.id.music_name);

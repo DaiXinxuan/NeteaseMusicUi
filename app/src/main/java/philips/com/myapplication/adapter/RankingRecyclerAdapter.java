@@ -113,6 +113,7 @@ public class RankingRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         public BigBillBoardViewHolder(View itemView) {
             super(itemView);
+            itemView.setClickable(true);
             imageView = (ImageView) itemView.findViewById(R.id.big_billboard_img);
             firstSong = (TextView) itemView.findViewById(R.id.first_song);
             secondSong = (TextView) itemView.findViewById(R.id.second_song);

@@ -19,6 +19,7 @@ public class RadioThirdFragment extends Fragment{
     private LinearLayout firstRow,secondRow;
     private ImageView img1,img2;
     private TextView text1,text2;
+    private LinearLayout firstLL,seondLL;
 
     @Nullable
     @Override
@@ -30,6 +31,12 @@ public class RadioThirdFragment extends Fragment{
 
     private void initView(View view) {
         firstRow = (LinearLayout) view.findViewById(R.id.first_row);
+
+        firstLL = (LinearLayout) firstRow.findViewById(R.id.first_ll);
+        seondLL = (LinearLayout) firstRow.findViewById(R.id.second_ll);
+        firstLL.setClickable(true);
+        seondLL.setClickable(true);
+
         img1 = (ImageView) firstRow.findViewById(R.id.first_img);
         img2 = (ImageView) firstRow.findViewById(R.id.second_img);
         text1 = (TextView) firstRow.findViewById(R.id.first_txt);

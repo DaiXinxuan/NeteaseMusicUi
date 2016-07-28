@@ -185,6 +185,7 @@ public class ShareRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         public ShareViewHolder(View itemView) {
             super(itemView);
+            itemView.setClickable(true);
             userIcon = (CircleImageView) itemView.findViewById(R.id.head_icon);
             cover = (ImageView) itemView.findViewById(R.id.sharemusic_icon);
             userName = (TextView) itemView.findViewById(R.id.username);

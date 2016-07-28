@@ -18,6 +18,7 @@ public class SmallBillBoardViewHolder extends RecyclerView.ViewHolder{
 
     public SmallBillBoardViewHolder(View itemView) {
         super(itemView);
+        itemView.setClickable(true);
         imageView = (ImageView) itemView.findViewById(R.id.small_billboard_img);
         name = (TextView) itemView.findViewById(R.id.billboard_name);
         updateTime = (TextView) itemView.findViewById(R.id.update_time);
