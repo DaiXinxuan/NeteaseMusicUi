@@ -31,7 +31,7 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private final static int TYPE_HEADER = 0;
     private final static int TYPE_TITLE = 1;
     private final static int TYPE_ITEM = 2;
-//    private final static int TYPE_FOOTER = 3;
+    private final static int TYPE_FOOTER = 3;
 
     public ContactRecyclerAdapter(Context context, ArrayList<ContactBean> contactBeans) {
         this.contactBeans = contactBeans;
@@ -54,6 +54,9 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         } else if (viewType == TYPE_TITLE) {
             view = LayoutInflater.from(context).inflate(R.layout.item_graytitle, parent, false);
             return new GrayTitleViewHolder(view);
+        } else if (viewType == TYPE_FOOTER){
+            view = LayoutInflater.from(context).inflate(R.layout.footer, parent, false);
+            return new Holder(view);
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false);
             return new ContactItemViewHolder(view);
@@ -63,7 +66,7 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
-        if (viewType == TYPE_HEADER) return;
+        if (viewType == TYPE_HEADER||viewType == TYPE_FOOTER) return;
         if (viewType == TYPE_TITLE) {
             GrayTitleViewHolder grayTitleViewHolder = (GrayTitleViewHolder) holder;
             if (position == 1) {
@@ -92,6 +95,8 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return TYPE_HEADER;
         } else if (position == 1 || position == recentCount + 2) {
             return TYPE_TITLE;
+        } else if (position + 1 == getItemCount()) {
+            return TYPE_FOOTER;
         } else {
             return TYPE_ITEM;
         }
@@ -99,8 +104,8 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        //1个header,两个title
-        return contactBeans.size() + recentCount + 3;
+        //1个header,两个title,1个footer
+        return contactBeans.size() + recentCount + 4;
     }
 
     class GrayTitleViewHolder extends RecyclerView.ViewHolder {
